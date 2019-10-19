@@ -9,45 +9,149 @@
 
 
 const story = {
-  'beach': {
-    after: ['and', 'they', 'forgot', 'their'],
+  '': {
+    word: '',
     children: {
-      'cat': {
-        '.': '.'
+      'Jenny': {
+        after: ['went', 'to', 'the'],
+        children: {
+          'beach': {
+            after: ['and', 'they', 'forgot', 'their'],
+            children: {
+              'cat': {
+                '.': '.'
+              },
+              'cheetos': {
+                '.': '.'
+              },
+              'towels': {
+                '.': '.'
+              }
+            }
+          },
+          'mall': {
+            after: ['and', 'they', 'bought', 'new'],
+            children: {
+              'slippers': {
+                '.': '.'
+              },
+              'toothpaste': {
+                '.': '.'
+              },
+              'Facebook Portals': {
+                '.': '.'
+              }
+            }
+          },
+          'castle': {
+            after: ['and', 'fell', 'into', 'the'],
+            children: {
+              'well': {
+                '.': '.'
+              },
+              'toilet': {
+                '.': '.'
+              },
+              'moat': {
+                '.': '.'
+              }
+            }
+          }
+        }
       },
-      'cheetos': {
-        '.': '.'
+      'Jasmine': {
+        after: ['went', 'to', 'the'],
+        children: {
+          'beach': {
+            after: ['and', 'they', 'forgot', 'their'],
+            children: {
+              'cat': {
+                '.': '.'
+              },
+              'cheetos': {
+                '.': '.'
+              },
+              'towels': {
+                '.': '.'
+              }
+            }
+          },
+          'mall': {
+            after: ['and', 'they', 'bought', 'new'],
+            children: {
+              'slippers': {
+                '.': '.'
+              },
+              'toothpaste': {
+                '.': '.'
+              },
+              'Facebook Portals': {
+                '.': '.'
+              }
+            }
+          },
+          'castle': {
+            after: ['and', 'fell', 'into', 'the'],
+            children: {
+              'well': {
+                '.': '.'
+              },
+              'toilet': {
+                '.': '.'
+              },
+              'moat': {
+                '.': '.'
+              }
+            }
+          }
+        }
       },
-      'towels': {
-        '.': '.'
-      }
-    }
-  },
-  'mall': {
-    after: ['and', 'they', 'bought', 'new'],
-    children: {
-      'slippers': {
-        '.': '.'
-      },
-      'toothpaste': {
-        '.': '.'
-      },
-      'Facebook Portals': {
-        '.': '.'
-      }
-    }
-  },
-  'castle': {
-    after: ['and', 'fell', 'into', 'the'],
-    children: {
-      'well': {
-        '.': '.'
-      },
-      'toilet': {
-        '.': '.'
-      },
-      'moat': {
-        '.': '.'
+      'Antonio': {
+        after: ['went', 'to', 'the'],
+        children: {
+          'beach': {
+            after: ['and', 'they', 'forgot', 'their'],
+            children: {
+              'cat': {
+                '.': '.'
+              },
+              'cheetos': {
+                '.': '.'
+              },
+              'towels': {
+                '.': '.'
+              }
+            }
+          },
+          'mall': {
+            after: ['and', 'they', 'bought', 'new'],
+            children: {
+              'slippers': {
+                '.': '.'
+              },
+              'toothpaste': {
+                '.': '.'
+              },
+              'Facebook Portals': {
+                '.': '.'
+              }
+            }
+          },
+          'castle': {
+            after: ['and', 'fell', 'into', 'the'],
+            children: {
+              'well': {
+                '.': '.'
+              },
+              'toilet': {
+                '.': '.'
+              },
+              'moat': {
+                '.': '.'
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -65,20 +169,15 @@ const face = FaceTracking.face(0);
 const storyText = Scene.root.find('2dTextStory');
 storyText.text = 'Tap to play game';
 
-// const optionText = Scene.root.find('2dTextOption');
-// optionText.text = '';
-
-// FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
-//   Diagnostics.log(event)
-// })
+const optionText = Scene.root.find('2dTextOption');
+optionText.text = '';
 
 let isPlaying = false
 
 TouchGestures.onTap().subscribeWithSnapshot({
   // Get the value of mouth openness when the tap gesture is detected
   'mouthOpennessValue': FaceTracking.face(0).mouth.openness,
-}, function (gesture, snapshot) {
-  Diagnostics.log('hello')
+}, (gesture, snapshot) => {
 
   isPlaying = !isPlaying
   Diagnostics.log(isPlaying)
@@ -86,15 +185,28 @@ TouchGestures.onTap().subscribeWithSnapshot({
   if (isPlaying) {
 
     // init story trie
+    let root = {...story}
+    let choices = Object.keys(root[''].children)
+    // let choosing = true
+    Diagnostics.log('choices: ')
+    Diagnostics.log(choices)
+
+    // loop through and show choices
+    // let i = 0
 
     // subscribe to mouth
     FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
       let openness = event.newValue
       if (openness > 0.3 && isPlaying) { // select word
         Diagnostics.log('mouth is open!!!')
+        // choosing = false
       }
-    })
 
+      // while (choosing) {
+      //   optionText.text = choices[i]
+      //   i = (i + 1) % 3
+      // }
+    })
     
     Diagnostics.log("we're playing the game!")
     storyText.text = "Play"
