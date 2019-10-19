@@ -238,7 +238,6 @@ const story = {
   }
 };
 
-// How to load in modules
 const Diagnostics = require('Diagnostics');
 const Scene = require('Scene');
 const FaceTracking = require('FaceTracking');
