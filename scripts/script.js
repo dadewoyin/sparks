@@ -164,15 +164,24 @@ const Diagnostics = require('Diagnostics');
 const Scene = require('Scene');
 const FaceTracking = require('FaceTracking');
 const TouchGestures = require('TouchGestures');
+const Time = require('Time');
 
 const face = FaceTracking.face(0);
 const storyText = Scene.root.find('2dTextStory');
 storyText.text = 'Tap to play game';
 
 const optionText = Scene.root.find('2dTextOption');
-optionText.text = '';
+optionText.text = 'hiiii';
 
 let isPlaying = false
+
+function changeOptionText(choices, i) {
+  Diagnostics.log('huhhhh')
+  Diagnostics.log(choices)
+  Diagnostics.log(i)
+  optionText.text = choices[i]
+  Diagnostics.log('another')
+}
 
 TouchGestures.onTap().subscribeWithSnapshot({
   // Get the value of mouth openness when the tap gesture is detected
@@ -192,7 +201,12 @@ TouchGestures.onTap().subscribeWithSnapshot({
     Diagnostics.log(choices)
 
     // loop through and show choices
-    // let i = 0
+    let i = 0
+
+    const intervalTimer = Time.setInterval(() => {
+      changeOptionText(choices, i)
+      i = (i + 1) % 3
+    }, 500);
 
     // subscribe to mouth
     FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
@@ -200,12 +214,8 @@ TouchGestures.onTap().subscribeWithSnapshot({
       if (openness > 0.3 && isPlaying) { // select word
         Diagnostics.log('mouth is open!!!')
         // choosing = false
-      }
 
-      // while (choosing) {
-      //   optionText.text = choices[i]
-      //   i = (i + 1) % 3
-      // }
+      }
     })
     
     Diagnostics.log("we're playing the game!")
