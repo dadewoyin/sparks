@@ -171,16 +171,12 @@ const storyText = Scene.root.find('2dTextStory');
 storyText.text = 'Tap to play game';
 
 const optionText = Scene.root.find('2dTextOption');
-optionText.text = 'hiiii';
+optionText.text = '';
 
 let isPlaying = false
 
 function changeOptionText(choices, i) {
-  Diagnostics.log('huhhhh')
-  Diagnostics.log(choices)
-  Diagnostics.log(i)
   optionText.text = choices[i]
-  Diagnostics.log('another')
 }
 
 TouchGestures.onTap().subscribeWithSnapshot({
@@ -206,24 +202,24 @@ TouchGestures.onTap().subscribeWithSnapshot({
     const intervalTimer = Time.setInterval(() => {
       i = (i + 1) % 3
       changeOptionText(choices, i)
-    }, 2000);
+    }, 500);
 
     // subscribe to mouth
     FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
       let openness = event.newValue
       if (openness > 0.3 && isPlaying) { // select word
-        Diagnostics.log('mouth is open!!!')
         Time.clearInterval(intervalTimer)
         const chosenWord = choices[i]
         Diagnostics.log('you picked: ')
         Diagnostics.log(chosenWord)
+        storyText.text = storyText.text + chosenWord
       }
     })
     
     Diagnostics.log("we're playing the game!")
-    storyText.text = "Play"
   } else { // we just shut off the game
     storyText.text = 'Tap to play game'
+    optionText.text = ''
     Diagnostics.log('helloooo')
   }
 });
