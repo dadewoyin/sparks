@@ -250,6 +250,8 @@ storyText.text = 'Tap to play game';
 const optionText = Scene.root.find('2dTextOption');
 optionText.text = '';
 
+// const beachBall = Scene.root.find('BeachItemsFBX')
+
 let isPlaying = false;
 
 function changeOptionText(choices, i) {
@@ -298,6 +300,12 @@ TouchGestures.onTap().subscribeWithSnapshot(
             const chosenWord = choices[i];
             Diagnostics.log('you picked: ');
             Diagnostics.log(chosenWord);
+
+            if (chosenWord === 'beach') {
+              // beachBall.visible = true
+              Diagnostics.log('you picked the beach ball')
+              // Diagnostics.log(beachBall)
+            }
             root = root.children[chosenWord];
             storyText.text = `${storyText.text.pinLastValue()} ${chosenWord} ${root.after.join(
               ' '
@@ -306,7 +314,7 @@ TouchGestures.onTap().subscribeWithSnapshot(
             if (choices.length < 3) {
               Diagnostics.log('THIS IS THE FINAL WORD THEY JUST CHOSE')
               storyText.text = `${storyText.text.pinLastValue()} ${chosenWord}.`;
-              optionText.text = 'Finished your story! Send?'
+              optionText.text = 'Finished your story!';
             }
           }
 
