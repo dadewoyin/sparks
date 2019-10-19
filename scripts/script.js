@@ -16,7 +16,7 @@ const story = {
         after: ['went', 'to', 'the'],
         children: {
           beach: {
-            after: ['and', 'they', 'forgot', 'their'],
+            after: ['and', 'forgot', 'the'],
             children: {
               cat: {
                 after: [],
@@ -39,7 +39,7 @@ const story = {
             }
           },
           mall: {
-            after: ['and', 'they', 'bought', 'new'],
+            after: ['and', 'bought', 'new'],
             children: {
               slippers: {
                 after: [],
@@ -90,7 +90,7 @@ const story = {
         after: ['went', 'to', 'the'],
         children: {
           beach: {
-            after: ['and', 'they', 'forgot', 'their'],
+            after: ['and', 'forgot', 'the'],
             children: {
               cat: {
                 after: [],
@@ -113,7 +113,7 @@ const story = {
             }
           },
           mall: {
-            after: ['and', 'they', 'bought', 'new'],
+            after: ['and', 'bought', 'new'],
             children: {
               slippers: {
                 after: [],
@@ -164,7 +164,7 @@ const story = {
         after: ['went', 'to', 'the'],
         children: {
           beach: {
-            after: ['and', 'they', 'forgot', 'their'],
+            after: ['and', 'forgot', 'the'],
             children: {
               cat: {
                 after: [],
@@ -187,7 +187,7 @@ const story = {
             }
           },
           mall: {
-            after: ['and', 'they', 'bought', 'new'],
+            after: ['and', 'bought', 'new'],
             children: {
               slippers: {
                 after: [],
