@@ -251,6 +251,8 @@ storyText.text = 'Tap to play game';
 const optionText = Scene.root.find('2dTextOption');
 optionText.text = '';
 
+const beachBall = Scene.root.find('BeachItemsFBX');
+
 let isPlaying = false;
 
 function changeOptionText(choices, i) {
@@ -304,6 +306,12 @@ TouchGestures.onTap().subscribeWithSnapshot(
               ' '
             )}\n`;
             choices = Object.keys(root.children);
+
+            if (chosenWord === 'beach') {
+              Diagnostics.log('beachhhhhhhhh :D')
+              beachBall.hidden = false
+            }
+            
             if (choices.length < 3) {
               Diagnostics.log('THIS IS THE FINAL WORD THEY JUST CHOSE')
               storyText.text = `${storyText.text.pinLastValue()} ${chosenWord}.`;
