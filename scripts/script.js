@@ -204,7 +204,6 @@ TouchGestures.onTap().subscribeWithSnapshot(
       }, 500);
 
       let chosen = false;
-
       // subscribe to mouth
       FaceTracking.face(0)
         .mouth.openness.monitor({ fireOnInitialValue: true })
@@ -212,15 +211,20 @@ TouchGestures.onTap().subscribeWithSnapshot(
           let openness = event.newValue;
           if (openness > 0.3 && isPlaying && !chosen) {
             // select word
-            Time.clearInterval(intervalTimer);
+            // Time.clearInterval(intervalTimer);)
+            chosen = true;
             const chosenWord = choices[i];
             Diagnostics.log('you picked: ');
             Diagnostics.log(chosenWord);
-            chosen = true;
             root = root.children[chosenWord];
             storyText.text = `${storyText.text.pinLastValue()} ${chosenWord} ${root.after.join(
               ' '
-            )}`;
+            )}\n`;
+            choices = Object.keys(root.children);
+          }
+          if (openness < 0.1 && chosen) {
+            chosen = false;
+            Diagnostics.log('closed mouth');
           }
         });
 
