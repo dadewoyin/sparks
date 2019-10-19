@@ -79,16 +79,27 @@ TouchGestures.onTap().subscribeWithSnapshot({
   'mouthOpennessValue': FaceTracking.face(0).mouth.openness,
 }, function (gesture, snapshot) {
   Diagnostics.log('hello')
-  // Diagnostics.log(snapshot.isPlaying)
 
   isPlaying = !isPlaying
   Diagnostics.log(isPlaying)
 
   if (isPlaying) {
+
+    // init story trie
+
     // subscribe to mouth
+    var mouthSubscription = FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
+      let openness = event.newValue
+      if (openness > 0.3) { // select word
+        Diagnostics.log('mouth is open!!!')
+      }
+    })
+
+    
     Diagnostics.log("we're playing the game!")
     storyText.text = "Play"
   } else { // we just shut off the game
     storyText.text = 'Tap to play game'
+      mouthSubscription.unsubscribe()
   }
 });
