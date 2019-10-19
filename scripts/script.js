@@ -245,7 +245,6 @@ const FaceTracking = require('FaceTracking');
 const TouchGestures = require('TouchGestures');
 const Time = require('Time');
 
-const face = FaceTracking.face(0);
 const storyText = Scene.root.find('2dTextStory');
 storyText.text = 'Tap to play game';
 
@@ -307,8 +306,11 @@ TouchGestures.onTap().subscribeWithSnapshot(
             choices = Object.keys(root.children);
             if (choices.length < 3) {
               Diagnostics.log('THIS IS THE FINAL WORD THEY JUST CHOSE')
+              storyText.text = `${storyText.text.pinLastValue()} ${chosenWord}.`;
+              optionText.text = 'Finished your story! Send?'
             }
           }
+
           if (openness < 0.1 && chosen) {
             chosen = false;
             Diagnostics.log('closed mouth');
