@@ -204,17 +204,19 @@ TouchGestures.onTap().subscribeWithSnapshot({
     let i = 0
 
     const intervalTimer = Time.setInterval(() => {
-      changeOptionText(choices, i)
       i = (i + 1) % 3
-    }, 500);
+      changeOptionText(choices, i)
+    }, 2000);
 
     // subscribe to mouth
     FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
       let openness = event.newValue
       if (openness > 0.3 && isPlaying) { // select word
         Diagnostics.log('mouth is open!!!')
-        // choosing = false
-
+        Time.clearInterval(intervalTimer)
+        const chosenWord = choices[i]
+        Diagnostics.log('you picked: ')
+        Diagnostics.log(chosenWord)
       }
     })
     
