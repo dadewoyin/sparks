@@ -19,13 +19,19 @@ const story = {
             after: ['and', 'they', 'forgot', 'their'],
             children: {
               cat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               cheetos: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               towels: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -33,13 +39,19 @@ const story = {
             after: ['and', 'they', 'bought', 'new'],
             children: {
               slippers: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toothpaste: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               'Facebook Portals': {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -47,13 +59,19 @@ const story = {
             after: ['and', 'fell', 'into', 'the'],
             children: {
               well: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toilet: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               moat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           }
@@ -66,13 +84,19 @@ const story = {
             after: ['and', 'they', 'forgot', 'their'],
             children: {
               cat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               cheetos: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               towels: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -80,13 +104,19 @@ const story = {
             after: ['and', 'they', 'bought', 'new'],
             children: {
               slippers: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toothpaste: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               'Facebook Portals': {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -94,13 +124,19 @@ const story = {
             after: ['and', 'fell', 'into', 'the'],
             children: {
               well: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toilet: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               moat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           }
@@ -113,13 +149,19 @@ const story = {
             after: ['and', 'they', 'forgot', 'their'],
             children: {
               cat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               cheetos: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               towels: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -127,13 +169,19 @@ const story = {
             after: ['and', 'they', 'bought', 'new'],
             children: {
               slippers: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toothpaste: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               'Facebook Portals': {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           },
@@ -141,13 +189,19 @@ const story = {
             after: ['and', 'fell', 'into', 'the'],
             children: {
               well: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               toilet: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               },
               moat: {
-                '.': '.'
+                children: {
+                  '.': '.'
+                }
               }
             }
           }
