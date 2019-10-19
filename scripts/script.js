@@ -88,9 +88,9 @@ TouchGestures.onTap().subscribeWithSnapshot({
     // init story trie
 
     // subscribe to mouth
-    var mouthSubscription = FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
+    FaceTracking.face(0).mouth.openness.monitor({ fireOnInitialValue: true }).subscribe(event => {
       let openness = event.newValue
-      if (openness > 0.3) { // select word
+      if (openness > 0.3 && isPlaying) { // select word
         Diagnostics.log('mouth is open!!!')
       }
     })
@@ -100,6 +100,6 @@ TouchGestures.onTap().subscribeWithSnapshot({
     storyText.text = "Play"
   } else { // we just shut off the game
     storyText.text = 'Tap to play game'
-      mouthSubscription.unsubscribe()
+    Diagnostics.log('helloooo')
   }
 });
